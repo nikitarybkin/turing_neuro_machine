@@ -26,7 +26,7 @@ def arrays_creator(n, m):
     return arrays
 
 
-X_train = arrays_crator(n, sample_size)
+X_train = arrays_creator(n, sample_size)
 model = Sequential()
 # model.add(Embedding(max_features, 128, input_length=maxlen))
 model.add(LSTM(64, return_sequences=True))
