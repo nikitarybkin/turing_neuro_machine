@@ -15,18 +15,22 @@ sample_size = 20000
 def random_array_creator(n):
     array = np.zeros((n, 1))
     for i in range(n):
-        array[i] = random.randrange(-500000, 49999)
+        array[i] = random.randrange(-50000, 49999)
     return array
 
 
 def arrays_creator(n, m):
     arrays = random_array_creator(n)
     for i in range(m - 1):
-        arrays = np.concatenate((arrays, random_array_creator(n)))
+        arrays = np.concatenate((arrays, random_array_creator(n)), 1)
     return arrays
 
 
 X_train = arrays_creator(n, sample_size)
+X_train = arrays_creator(n, sample_size)
+Y_train = X_train
+for i in range(m - 1):
+    Y_train = np.concatenate((Y_train, X_train), 0)
 model = Sequential()
 # model.add(Embedding(max_features, 128, input_length=maxlen))
 model.add(LSTM(64, return_sequences=True))
