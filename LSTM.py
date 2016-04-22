@@ -14,7 +14,7 @@ n = 10
 m = 5
 sample_size = 20000
 value_ambit = (-500, 499)
-norm_factor = value_ambit[1] - value_ambit[0]
+norm_factor = value_ambit[1] - value_ambit[0] + 1
 
 
 def random_array_creator(n):
