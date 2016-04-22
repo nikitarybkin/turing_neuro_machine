@@ -27,7 +27,6 @@ def arrays_creator(n, m):
 
 
 X_train = arrays_creator(n, sample_size)
-X_train = arrays_creator(n, sample_size)
 Y_train = X_train
 for i in range(m - 1):
     Y_train = np.concatenate((Y_train, X_train), 0)
