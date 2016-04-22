@@ -4,20 +4,29 @@ from keras.models import Sequential
 from keras.layers.core import Dense, Dropout, Activation
 from keras.layers.embeddings import Embedding
 from keras.layers.recurrent import LSTM
-from random import randint
+import random
 import numpy as np
 
 n = 10
 m = 5
+sample_size = 20000
 
 
-def array_creator(n):
-    array = np.zeros(n)
+def random_array_creator(n):
+    array = np.zeros((n, 1))
     for i in range(n):
-        array[i] = randint(-49999, 50000)
+        array[i] = random.randrange(-500000, 49999)
     return array
 
 
+def arrays_creator(n, m):
+    arrays = random_array_creator(n)
+    for i in range(m - 1):
+        arrays = np.concatenate((arrays, random_array_creator(n)))
+    return arrays
+
+
+X_train = arrays_crator(n, sample_size)
 model = Sequential()
 # model.add(Embedding(max_features, 128, input_length=maxlen))
 model.add(LSTM(64, return_sequences=True))
